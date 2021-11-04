@@ -5,5 +5,5 @@ dist/
 node_modules/
 esm/
 
-yarn.lock
 package-lock.json
+.eslintcache

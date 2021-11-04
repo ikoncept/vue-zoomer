@@ -1,0 +1,53 @@
+{
+    "root": true,
+    "parserOptions": {
+        "parser": "@babel/eslint-parser",
+        "ecmaVersion": 2020,
+        "sourceType": "module"
+    },
+    "extends": [
+        "plugin:vue/recommended",
+        "standard"
+    ],
+    "rules": {
+        "vue/require-component-is": "off",
+        "vue/max-attributes-per-line": [
+            "error",
+            {
+                "singleline": 4,
+                "multiline": {
+                    "max": 1,
+                    "allowFirstLine": true
+                }
+            }
+        ],
+        "vue/component-name-in-template-casing": [
+            "error",
+            "PascalCase",
+            {
+                "registeredComponentsOnly": false,
+                "ignores": []
+            }
+        ],
+        "vue/no-v-html": "off",
+        "indent": [
+            "error",
+            4
+        ],
+        "vue/html-indent": [
+            "error",
+            4
+        ],
+        "multiline-ternary": [
+            "error",
+            "never"
+        ],
+        "eqeqeq": [
+            "error",
+            "always"
+        ]
+    },
+    "plugins": [
+        "@babel"
+    ]
+}

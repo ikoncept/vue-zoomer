@@ -5,8 +5,7 @@ import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
-const banner = `// vue-zoomer v${ pkg.version } - Jarvis Niu
-// https://github.com/jarvisniu/vue-zoomer\n`
+const banner = `// vue-zoomer v${ pkg.version } - ${pkg.author}\n// ${pkg.homepage}\n`
 
 export default {
   input: 'src/index.js',

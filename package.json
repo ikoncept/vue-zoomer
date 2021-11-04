@@ -11,7 +11,8 @@
     "build-basic": "parcel build demo/basic/index.html --public-url . --out-dir dist/demo --out-file basic.html",
     "build-gallery": "parcel build demo/gallery/index.html --public-url . --out-dir dist/demo --out-file gallery.html",
     "build-lib": "rollup -c",
-    "build": "npm run clean && npm run build-basic && npm run build-gallery && npm run build-lib"
+    "build": "npm run clean && npm run build-basic && npm run build-gallery && npm run build-lib",
+    "lint": "eslint --fix --ext .js,.vue src/ --cache"
   },
   "keywords": [
     "zoom",
@@ -26,7 +27,17 @@
   "author": "Daniel Källstrand Modig <daniel@ikoncept.se>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.0",
+    "@babel/eslint-plugin": "^7.14.5",
     "@vue/component-compiler-utils": "^2.6.0",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^5.2.2",
     "parcel-bundler": "^1.12.4",
     "rollup": "^1.20.2",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -43,5 +54,8 @@
   "bugs": {
     "url": "https://github.com/ikoncept/vue-zoomer/issues"
   },
-  "homepage": "https://github.com/ikoncept/vue-zoomer#readme"
+  "homepage": "https://github.com/ikoncept/vue-zoomer#readme",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
+  }
 }
