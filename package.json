@@ -1,6 +1,6 @@
 {
   "name": "@ikoncept/vue-zoomer",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Zoom the image or other thing with mouse or touch",
   "main": "dist/vue-zoomer.min.js",
   "module": "dist/vue-zoomer.esm.js",
