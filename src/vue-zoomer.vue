@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import _debounce from './debounce.min.js'
-
+import _debounce from 'lodash.debounce'
 import TapDetector from './TapDetector'
 
 export default {
@@ -37,6 +36,10 @@ export default {
         zoomed: {
             type: Boolean,
             default: false
+        },
+        startScale: {
+            type: Number,
+            default: 1
         },
         resetTrigger: {
             type: Number,
@@ -104,7 +107,8 @@ export default {
             panLocked: true,
             // Others
             raf: null,
-            tapDetector: null
+            tapDetector: null,
+            ignorePivot: false
         }
     },
     computed: {
@@ -155,22 +159,16 @@ export default {
         resetTrigger: 'reset'
     },
     mounted () {
-        this.tapDetector = new TapDetector()
-        this.tapDetector.attach(this.$el)
-
-        if (this.doubleClickToZoom) {
-            this.tapDetector.onDoubleTap(this.onTap)
-        }
-
-        if (this.clickToZoom) {
-            this.tapDetector.onSingleTap(this.onTap)
-        }
-
-        window.addEventListener('resize', this.onWindowResize)
-
+        this.bindEvents()
         this.onWindowResize()
         this.refreshContainerPos()
         this.loop()
+
+        if (this.startScale > 1) {
+            this.pointerPosX = this.containerLeft + (this.containerWidth / 2)
+            this.pointerPosY = this.containerTop + (this.containerHeight / 2)
+            this.zoomIn(this.startScale)
+        }
     },
     destroyed () {
         this.tapDetector.detach(this.$el)
@@ -194,6 +192,20 @@ export default {
             this.onInteractionEnd()
         },
         // Main Logic
+        bindEvents () {
+            this.tapDetector = new TapDetector()
+            this.tapDetector.attach(this.$el)
+
+            if (this.doubleClickToZoom) {
+                this.tapDetector.onDoubleTap(this.onTap)
+            }
+
+            if (this.clickToZoom) {
+                this.tapDetector.onSingleTap(this.onTap)
+            }
+
+            window.addEventListener('resize', this.onWindowResize)
+        },
         // scale
         // Zoom the image with the point at the pointer(mouse or pinch center) pinned.
         // Simplify: This can be regard as vector pointer to old-image-center scaling.

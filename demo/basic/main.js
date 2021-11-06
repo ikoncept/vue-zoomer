@@ -5,7 +5,7 @@ import App from './app.vue'
 Vue.use(VueZoomer)
 Vue.component('App', App)
 
-new Vue({
-  el: '#app',
-  render: h => h('App'),
+const app = new Vue({
+    el: '#app',
+    render: h => h('App')
 })
